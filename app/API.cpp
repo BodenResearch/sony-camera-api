@@ -191,7 +191,7 @@ std::string API::handle_connect_camera(const std::string& ip, const std::string&
         return "";
     }
 
-    fprintf(stdout, "[DEBUG] Camera Info:\n    Name: %s\n    Model: %s\n    UsbPid: %s\n    Id: %s\n    ConnectionType: %s\n    Adaptor Name: %s\n    Pairing Necessity: %s\n    SSHSupport: %b\n",
+    fprintf(stdout, "[DEBUG] Camera Info:\n    Name: %s\n    Model: %s\n    UsbPid: %d\n    Id: %s\n    ConnectionType: %s\n    Adaptor Name: %s\n    Pairing Necessity: %s\n    SSHSupport: %b\n",
         pCam->GetName(),
         pCam->GetModel(),
         pCam->GetUsbPid(),
@@ -199,7 +199,7 @@ std::string API::handle_connect_camera(const std::string& ip, const std::string&
         pCam->GetConnectionTypeName(),
         pCam->GetAdaptorName(),
         pCam->GetPairingNecessity(),
-        (pCam->GetSSHsupport() == SDK::CrSSHsupportValue::CrSSHsupport_ON)
+        (pCam->GetSSHsupport() == SCRSDK::CrSSHsupportValue::CrSSHsupport_ON)
     );
     
     // Create camera device and connect
