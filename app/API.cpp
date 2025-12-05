@@ -190,6 +190,17 @@ std::string API::handle_connect_camera(const std::string& ip, const std::string&
         std::cerr << "Failed to create camera object for IP: " << ip << std::endl;
         return "";
     }
+
+    fprintf(stdout, "[DEBUG] Camera Info:\n    Name: %s\n    Model: %s\n    UsbPid: %s\n    Id: %s\n    ConnectionType: %s\n    Adaptor Name: %s\n    Pairing Necessity: %s\n    SSHSupport: %b\n",
+        pCam->GetName(),
+        pCam->GetModel(),
+        pCam->GetUsbPid(),
+        pCam->GetId(),
+        pCam->GetConnectionTypeName(),
+        pCam->GetAdaptorName(),
+        pCam->GetPairingNecessity(),
+        pCam->GetSSHsupport()
+    );
     
     // Create camera device and connect
     auto camera_device = std::make_shared<cli::CameraDevice>(1, pCam);

@@ -200,9 +200,10 @@ bool CameraDevice::connect(SCRSDK::CrSdkControlMode openMode, SCRSDK::CrReconnec
     m_modeSDK = openMode;
     const char* inputId = "admin";
     char inputPassword[32] = { 0 };
+    fprintf(stdout, "[DEBUG] Does Support SSH: %b\n", (get_sshsupport() == SDK::CrSSHsupportValue::CrSSHsupport_ON));
     if (SDK::CrSSHsupportValue::CrSSHsupport_ON == get_sshsupport() || std::string(m_info->GetModel()) == "fake camera")
     {
-        if (!is_getfingerprint() && std::string(m_info->GetModel()) != "fake camera")
+        if (!is_getfingerprint())
         {
             bool resFp = getfingerprint();
             if (resFp)
