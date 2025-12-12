@@ -55,7 +55,11 @@ class CameraDevice : public SCRSDK::IDeviceCallback
 public:
     CameraDevice() = delete;
     CameraDevice(std::int32_t no, SCRSDK::ICrCameraObjectInfo const* camera_info);
+    CameraDevice(std::int32_t no, bool isFake);
     ~CameraDevice();
+
+    // set password prior to connecting
+    void set_userpassword(std::string);
 
     // Get fingerprint
     bool getfingerprint();

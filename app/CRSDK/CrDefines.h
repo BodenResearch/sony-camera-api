@@ -122,7 +122,7 @@ namespace SCRSDK
 		CrCameraDeviceModel_ILME_FX3A,
 		CrCameraDeviceModel_BRC_AM7,
 		CrCameraDeviceModel_ILME_FR7,
-		CrCameraDeviceModel_ILME_FX2,
+		CrCameraDeviceModel_ILME_FX2
 	};
 
 	enum CrReconnectingSet : CrInt32u

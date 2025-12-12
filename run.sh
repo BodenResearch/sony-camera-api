@@ -29,7 +29,7 @@ if [ $? -eq 0 ]; then
     echo "Executable: ./CameraRestAPI"
     echo ""
     echo "To run the server:"
-    echo "  ./CameraRestAPI [port]"
+    echo "  ./CameraRestAPI [port] [--fake-camera - enables debugging without a camera]"
     echo ""
     echo "Default port is 8080 if not specified."
     echo ""

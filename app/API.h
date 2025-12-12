@@ -40,6 +40,9 @@ public:
     // Stop the server
     void stop();
 
+    // Enable a fake testing camera
+    void enable_fake_camera();
+
 private:
     // REST endpoint handlers
     std::string handle_connect_camera(const std::string& ip, const std::string& password);
@@ -56,6 +59,7 @@ private:
     std::map<std::string, CameraInfo> m_cameras;
     std::mutex m_cameras_mutex;
     bool m_running;
+    bool m_fakecam;
 };
 
 } // namespace api

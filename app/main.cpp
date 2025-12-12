@@ -26,14 +26,20 @@ int main(int argc, char* argv[])
     std::signal(SIGTERM, signal_handler);
 
     int port = 8080;
-    
-    // Allow port to be specified via command line
-    if (argc > 1) {
-        try {
-            port = std::stoi(argv[1]);
-        } catch (const std::exception& e) {
-            std::cerr << "Invalid port number. Using default: 8080" << std::endl;
-            port = 8080;
+    bool useFake = false;
+
+    // Allow port and development settings to be specified via command line
+    if(argc > 1){
+        for(int i = 0; i < argc; i++){
+            if(std::string(argv[i]) == "--fake-camera"){
+                useFake = true;
+            }else{
+                try{
+                    port = std::stoi(argv[i]);
+                }catch(const std::exception& e){
+                    port = 8080;
+                }
+            }
         }
     }
     cli::tout << "Initialize Remote SDK...\n";
@@ -62,6 +68,8 @@ int main(int argc, char* argv[])
 
     try {
         server = std::make_unique<api::API>(port);
+        if(useFake)
+            server->enable_fake_camera();
         server->start(); // Blocks until server stops
     } catch (const std::exception& e) {
         std::cerr << "Server error: " << e.what() << std::endl;
